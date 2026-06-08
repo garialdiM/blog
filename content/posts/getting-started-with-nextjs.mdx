@@ -1,0 +1,47 @@
+---
+title: "Getting Started with Next.js"
+date: "2026-05-28"
+description: "A quick tour of the App Router, server components, and the mental model you need to build fast modern web apps."
+thumbnail: "/thumbnails/nextjs.png"
+---
+
+Next.js has become the default way many developers reach for React in production. The App Router, introduced a few releases ago, reorganizes how we think about routing, data fetching, and rendering.
+
+## Why server components matter
+
+Server Components let you keep data-fetching logic on the server, shipping less JavaScript to the browser. The result is faster page loads and a simpler mental model.
+
+```tsx
+// app/page.tsx
+export default async function Page() {
+  const posts = await getPosts()
+  return (
+    <ul>
+      {posts.map((post) => (
+        <li key={post.slug}>{post.title}</li>
+      ))}
+    </ul>
+  )
+}
+```
+
+By default, every component in the `app` directory is a Server Component. You only opt into client behavior when you need interactivity.
+
+## Adding interactivity
+
+When you need state, effects, or event handlers, mark the file with the `"use client"` directive:
+
+```tsx
+"use client"
+
+import { useState } from "react"
+
+export function Counter() {
+  const [count, setCount] = useState(0)
+  return <button onClick={() => setCount(count + 1)}>Count: {count}</button>
+}
+```
+
+> The best architecture keeps the interactive surface small and pushes as much as possible to the server.
+
+That's the core idea. Start on the server, reach for the client only when you must.
