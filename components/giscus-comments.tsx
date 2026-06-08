@@ -10,10 +10,10 @@ export function GiscusComments() {
     <div className="mt-16 border-t border-border pt-10">
       <Giscus
         id="comments"
-        repo="TU_USUARIO/TU_REPO"
-        repoId="TU_REPO_ID"
+        repo="garialdiM/blog"
+        repoId="R_kgDOS0qyJA"
         category="General"
-        categoryId="TU_CATEGORY_ID"
+        categoryId="DIC_kwDOS0qyJM4C-xMm"
         mapping="pathname"
         strict="0"
         reactionsEnabled="1"
